@@ -1,2 +1,4 @@
 env/
 wattmart/wattmart/__pycache__
+wattmart/item/__pycache__
+wattmart/item/migrations
