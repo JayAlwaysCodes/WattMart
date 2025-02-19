@@ -2,3 +2,10 @@ env/
 wattmart/wattmart/__pycache__
 wattmart/item/__pycache__
 wattmart/item/migrations
+wattmart/conversation/__pycache__
+wattmart/conversation/migrations
+wattmart/dashboard/__pycache__
+wattmart/dashboard/migrations
+wattmart/core/__pycache__
+wattmart/core/migrations
+wattmart/db.sqlite3
