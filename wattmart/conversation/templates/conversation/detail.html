@@ -3,24 +3,28 @@
 {% block title %}Conversation{% endblock %}
 
 {% block content %}
-    <h1 class="mb-6 text-3xl">Conversation</h1>
+<div class="max-w-4xl mx-auto my-12 bg-white p-8 rounded-xl shadow-lg">
+    <h1 class="mb-8 text-3xl font-bold text-purple-600 text-center">Conversation</h1>
 
     <div class="space-y-6">
         {% for message in conversation.messages.all %}
-            
-            <div class="p-6 m-2 {% if message.created_by == request.user %}bg-blue-100 {% else %} bg-gray-100{% endif %} rounded-xl">
-               <p class="mb-4"><strong>{{ message.created_by.username }}</strong> @ {{ message.created_at }} </p>
-               
-               <p>{{ message.content }}</p>
+            <div class="p-6 rounded-xl shadow-md {% if message.created_by == request.user %}bg-purple-100 {% else %}bg-gray-100{% endif %}">
+                <p class="mb-4 text-gray-700 font-semibold">
+                    <strong class="text-purple-600">{{ message.created_by.username }}</strong> @ {{ message.created_at }}
+                </p>
+                <p class="text-gray-800">{{ message.content }}</p>
             </div>
-            
+        {% empty %}
+            <p class="text-center text-gray-500">No messages yet.</p>
         {% endfor %}
     </div>
 
-    <form action="." method="post" class="mt-6">
+    <form action="." method="post" class="mt-6 bg-gray-50 p-6 rounded-xl shadow-md">
         {% csrf_token %}
-
-        {{ form.as_p }}
-        <button class="py-4 px-8 text-lg bg-teal-700 rounded-xl text-white">Send</button>
+        <div class="space-y-4">
+            {{ form.as_p }}
+        </div>
+        <button class="w-full py-3 px-6 text-lg bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">Send</button>
     </form>
+</div>
 {% endblock %}

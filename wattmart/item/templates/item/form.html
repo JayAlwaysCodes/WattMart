@@ -1,24 +1,46 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h1 class="mb-6 text-3xl">{{title}}</h1>
+<div class="max-w-md mx-auto my-12 bg-white p-8 rounded-xl shadow-lg">
+    <h1 class="mb-8 text-3xl font-bold text-purple-600 text-center">{{ title }}</h1>
 
-    <form method="post" action="." enctype="multipart/form-data">
+    <form method="post" action="." enctype="multipart/form-data" class="space-y-6">
         {% csrf_token %}
+
+        <!-- Form Fields -->
         <div class="space-y-4">
-            {{ form.as_p }}
+            {% for field in form %}
+                <div>
+                    <label for="{{ field.id_for_label }}" class="block text-gray-700 font-semibold mb-2">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="text-sm text-gray-500 mt-1">{{ field.help_text }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
+
+        <!-- Error Messages -->
         {% if form.errors or form.non_field_errors %}
-            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            <div class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
                 {% for field in form %}
                     {{ field.errors }}
                 {% endfor %}
-
                 {{ form.non_field_errors }}
             </div>
         {% endif %}
-        <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+
+        <!-- Submit Button -->
+        <div>
+            <button
+                type="submit"
+                class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition duration-300"
+            >
+                Submit
+            </button>
+        </div>
     </form>
+</div>
 {% endblock %}
