@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "wattmart/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "wattmart/wsgi.py"
+      }
+    ]
+  }

@@ -1,0 +1,21 @@
+{
+    "short_name": "WattMart",
+    "name": "Watt Mart - P2P Ecommerce",
+    "icons": [
+      {
+        "src": "/static/images/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/static/images/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#6D28D9"
+  }

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %} <!-- Add this line to load the static tag -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="{% static 'manifest.json' %}"> <!-- Now this will work -->
     <script src="https://cdn.tailwindcss.com"></script>
+    {% load pwa %}
+    {% progressive_web_app_meta %}
     <title>{% block title %}{% endblock %} | Watt Mart</title>
 </head>
 <body class="bg-gray-50">
@@ -48,8 +52,8 @@
                 <ul class="space-y-2">
                     <li><a href="#" class="text-lg text-white hover:text-orange-300 transition duration-300">About</a></li>
                     <li><a href="{% url 'core:contact' %}" class="text-lg text-white hover:text-orange-300 transition duration-300">Contact</a></li>
-                    <li><a href="#" class="text-lg text-white hover:text-orange-300 transition duration-300">Privacy Policy</a></li>
-                    <li><a href="#" class="text-lg text-white hover:text-orange-300 transition duration-300">Terms of Use</a></li>
+                    <li><a href="" class="text-lg text-white hover:text-orange-300 transition duration-300">Privacy Policy</a></li>
+                    <li><a href="" class="text-lg text-white hover:text-orange-300 transition duration-300">Terms of Use</a></li>
                 </ul>
             </div>
         </div>
